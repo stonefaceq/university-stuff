@@ -1,11 +1,11 @@
 fun main() {
-    val g = Graph()
-    g.addVertex("A")
-    g.addVertex("B")
-    g.addVertex("C")
-    g.addVertex("D")
-    g.connectVertex("A", "C")
-    g.connectVertex("B", "D")
-    g.connectVertex("B", "C")
-
+    val g = Graph<Int>()
+    g.addVertex(1)
+    g.addVertex(2)
+    g.addVertex(3)
+    g.addVertex(4)
+    g.connectVertex(1, 3)
+    g.connectVertex(2, 4)
+    g.connectVertex(2, 3)
+    g.showNeighbors(2)
 }

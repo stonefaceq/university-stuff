@@ -1,20 +1,37 @@
 import java.lang.IllegalArgumentException
 
-class Graph {
-    private data class Vertex(val name: String) {
-        val neighbours = mutableSetOf<Vertex>()
+class Graph<T> {
+    private data class Vertex<T>(val name: T) {
+        val neighbors = mutableSetOf<Vertex<T>>()
     }
 
-    private val vertices = mutableMapOf<String, Vertex>()
-    fun addVertex(name: String) {
+    private val vertices = mutableMapOf<T, Vertex<T>>()
+
+    fun addVertex(name: T) {
         vertices[name] = Vertex(name)
     }
-    fun connectVertex (name1: String, name2: String){
-        if (name1 !in vertices || name2 !in vertices) {
-            throw Exception("invalid argument")
-        }
-        Vertex(name1).neighbours.add(Vertex(name2))
-        Vertex(name2).neighbours.add(Vertex(name1))
+
+    private fun connect(first: Vertex<T>, second: Vertex<T>) {
+        first.neighbors.add(second)
+        second.neighbors.add(first)
+    }
+
+    fun connectVertex(first: T, second: T) {
+        connect(this[first], this[second])
+    }
+    fun neighbors(name: T): List<T> {
+        val vertex = vertices[name]
+        return vertex?.neighbors?.map { it.name } ?: listOf()
+    }
+
+    fun showNeighbors(name: T) {
+        println(neighbors(name))
+    }
+
+    private operator fun get(name: T) : Vertex<T> {
+        return vertices[name] ?: throw IllegalArgumentException()
     }
 
 }
+
+
