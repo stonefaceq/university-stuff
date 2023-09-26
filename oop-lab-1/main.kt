@@ -9,6 +9,8 @@ fun main() {
        g.connectVertex(3, 4, 6)
        g.connectVertex(1, 2, 7)
        g.showNeighbors(1)
+        val minspantree = g.findMinSpanTreePrim()
+       minspantree.printMinSpanTree()
 
    } catch (e: IllegalArgumentException) {
        println("Illegal argument exception.")

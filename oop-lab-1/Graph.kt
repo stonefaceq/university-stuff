@@ -1,7 +1,7 @@
 import java.lang.IllegalArgumentException
 
-class Graph<T> {
-    private data class Vertex<T>(val name: T) {
+open class Graph<T> {
+    protected data class Vertex<T>(val name: T) {
         val neighbors = mutableMapOf<Vertex<T>, Int>()
     }
 
@@ -9,21 +9,22 @@ class Graph<T> {
 
     fun addVertex(name: T) {
 
-            vertices[name] = Vertex(name)
+        vertices[name] = Vertex(name)
 
     }
-    fun connectVertex(first: T, second: T, weight:Int) {
-        if(vertices.containsKey(first) && vertices.containsKey(second)) {
+
+    fun connectVertex(first: T, second: T, weight: Int) {
+        if (vertices.containsKey(first) && vertices.containsKey(second)) {
             val startV = vertices[first]
             val destV = vertices[second]
             startV!!.neighbors[destV!!] = weight
             destV.neighbors[startV] = weight
-        }
-        else {
+        } else {
             throw IllegalArgumentException()
         }
     }
-    private  fun getNeighborMap(name: T): Map<T, Int> {
+
+    fun getNeighborMap(name: T): Map<T, Int> {
         val vertex = vertices[name]
         if (vertex != null) {
             val neighborMap = mutableMapOf<T, Int>()
@@ -34,29 +35,62 @@ class Graph<T> {
             return neighborMap
 
 
-        }
-        else
+        } else
             return mutableMapOf()
 
     }
 
+    fun findMinSpanTreePrim(): MinimumSpanningTree<T> {
+        val visited = mutableSetOf<T>()
+        val minimumSpanningTree = MinimumSpanningTree<T>()
+        if (vertices.isEmpty()) {
+            return minimumSpanningTree
+        }
+        val startVertex = vertices.values.first()
+        visited.add(startVertex.name)
+
+        while (visited.size < vertices.size) {
+            var minWeight = Int.MAX_VALUE
+            var nextVertex: T? = null
+            var currVertex: T? = null
+
+            for (vertexName in visited) {
+                val vertex = vertices[vertexName] ?: continue
+
+                for ((neighbor, weight) in vertex.neighbors) {
+                    if (neighbor.name !in visited && weight < minWeight) {
+                        minWeight = weight
+                        nextVertex = neighbor.name
+                        currVertex = vertex.name
+                    }
+                }
+            }
+            if (nextVertex != null && currVertex != null) {
+                visited.add(nextVertex)
+                minimumSpanningTree.addEdge(currVertex, nextVertex, minWeight)
+            } else {
+                break
+            }
+
+        }
+        return minimumSpanningTree
+    }
 
 
-    fun showNeighbors(name: T) {
-        if (this.getNeighborMap(name) !=null)  {
+        fun showNeighbors(name: T) {
+
             for ((neighbor, weight) in getNeighborMap(name)) {
                 println("neighbor: $neighbor, weight: $weight\n")
             }
+
+
         }
-        else
-            println("error")
 
+
+        private operator fun get(name: T): Vertex<T> {
+            return vertices[name] ?: throw IllegalArgumentException()
+        }
     }
 
-    private operator fun get(name: T) : Vertex<T> {
-        return vertices[name] ?: throw IllegalArgumentException()
-    }
-
-}
 
 
