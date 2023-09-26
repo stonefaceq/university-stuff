@@ -4,24 +4,29 @@ class Graph<T> {
     private data class Vertex<T>(val name: T) {
         val neighbors = mutableSetOf<Vertex<T>>()
     }
+    private data class Edge<T>(val start: T, val destination: T, val weight: Int)
 
     private val vertices = mutableMapOf<T, Vertex<T>>()
 
     fun addVertex(name: T) {
-        vertices[name] = Vertex(name)
-    }
 
-    private fun connect(first: Vertex<T>, second: Vertex<T>) {
-        first.neighbors.add(second)
-        second.neighbors.add(first)
-    }
+            vertices[name] = Vertex(name)
 
-    fun connectVertex(first: T, second: T) {
-        connect(this[first], this[second])
+    }
+    fun connectVertex(first: T, second: T, weight: Int) {
+        if(vertices.containsKey(first) && vertices.containsKey(second)) {
+            val startV = vertices[first]
+            val destV = vertices[second]
+            startV!!.neighbors.add(destV!!)
+            destV.neighbors.add(startV)
+        }
+        else {
+            throw IllegalArgumentException()
+        }
     }
     fun neighbors(name: T): List<T> {
         val vertex = vertices[name]
-        return vertex?.neighbors?.map { it.name } ?: listOf()
+        return vertex?.neighbors?.map { it.name  } ?: listOf()
     }
 
     fun showNeighbors(name: T) {
