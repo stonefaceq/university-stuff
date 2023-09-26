@@ -13,18 +13,18 @@ open class Graph<T> {
 
     }
 
-    fun connectVertex(first: T, second: T, weight: Int) {
+    fun connectVertex(first: T, second: T, weight: Int) { //connecting two vertices with checking if they are contained in vertices map
         if (vertices.containsKey(first) && vertices.containsKey(second)) {
             val startV = vertices[first]
             val destV = vertices[second]
             startV!!.neighbors[destV!!] = weight
-            destV.neighbors[startV] = weight
+            destV.neighbors[startV] = weight //for some reason only destV need to be asserted as non-nullable
         } else {
             throw IllegalArgumentException()
         }
     }
 
-    fun getNeighborMap(name: T): Map<T, Int> {
+    private fun getNeighborMap(name: T): Map<T, Int> { // for singular vertex we get a map of all neighbours with edge's weight
         val vertex = vertices[name]
         if (vertex != null) {
             val neighborMap = mutableMapOf<T, Int>()
@@ -40,8 +40,8 @@ open class Graph<T> {
 
     }
 
-    fun findMinSpanTreePrim(): MinimumSpanningTree<T> {
-        val visited = mutableSetOf<T>()
+    fun findMinSpanTreePrim(): MinimumSpanningTree<T> { //finding of a minimal spanning tree using Prim's algorithm.
+        val visited = mutableSetOf<T>()                 // i also plan on adding Kruskal's algorithm
         val minimumSpanningTree = MinimumSpanningTree<T>()
         if (vertices.isEmpty()) {
             return minimumSpanningTree
@@ -87,7 +87,7 @@ open class Graph<T> {
         }
 
 
-        private operator fun get(name: T): Vertex<T> {
+        private operator fun get(name: T): Vertex<T> { //operator override function used for getting Vertex objects from their names
             return vertices[name] ?: throw IllegalArgumentException()
         }
     }
