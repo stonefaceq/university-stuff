@@ -4,7 +4,6 @@ class Graph<T> {
     private data class Vertex<T>(val name: T) {
         val neighbors = mutableSetOf<Vertex<T>>()
     }
-    private data class Edge<T>(val start: T, val destination: T, val weight: Int)
 
     private val vertices = mutableMapOf<T, Vertex<T>>()
 
@@ -13,7 +12,7 @@ class Graph<T> {
             vertices[name] = Vertex(name)
 
     }
-    fun connectVertex(first: T, second: T, weight: Int) {
+    fun connectVertex(first: T, second: T) {
         if(vertices.containsKey(first) && vertices.containsKey(second)) {
             val startV = vertices[first]
             val destV = vertices[second]
