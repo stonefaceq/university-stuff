@@ -8,12 +8,11 @@ fun main() {
        g.connectVertex(1, 3, 5)
        g.connectVertex(3, 4, 6)
        g.connectVertex(1, 2, 7)
-       g.showNeighbors(2)
-       val minSpTrPrim = g.findMinSpanTreePrim()
-        minSpTrPrim.printMinSpanTree()
+       g.showNeighbors(1)
        println("___________________")
-       val minSpTrKruskal = g.findMinSpanTreeKruskal()
-       minSpTrKruskal.printMinSpanTree()
+       g.removeVertex(4)
+       g.disconnectVertices(1, 2)
+       g.showNeighbors(1)
    } catch (e: IllegalArgumentException) {
        println("Illegal argument exception.")
    }
