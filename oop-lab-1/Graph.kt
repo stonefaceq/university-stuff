@@ -77,6 +77,40 @@ open class Graph<T> {
     }
 
 
+    fun findMinSpanTreeKruskal(): MinimumSpanningTree<T> { //works not as intended; edges display two times (for example, 1--3 and 3--1)
+        val minimumSpanningTree = MinimumSpanningTree<T>()
+        if (vertices.isEmpty()) {
+            return minimumSpanningTree
+        }
+        val allEdges = mutableListOf<Pair<Pair<T, T>, Int>>() // edge consists of a pair of vertices and its weight
+        for ((name1, vertex1) in vertices) {
+            for ((vertex2, weight) in vertex1.neighbors) {
+                val edge = Pair(Pair(name1, vertex2.name), weight)
+                allEdges.add(edge)
+            }
+        }
+
+        val sortedEdges = allEdges.sortedBy { it.second } //sorting all edges by their weight
+
+        val unionFind = UnionFind<T>()
+        for (name in vertices.keys) {
+            unionFind.makeComponent(name)
+        }
+
+        for((edge, weight) in sortedEdges) {
+            val (vertex1, vertex2) = edge
+            if (!unionFind.inSameComponent(vertex1, vertex2)) {
+                minimumSpanningTree.addEdge(vertex1, vertex2, weight)
+                unionFind.union(vertex1, vertex2)
+            }
+        }
+
+
+        return minimumSpanningTree
+
+    }
+
+
         fun showNeighbors(name: T) {
 
             for ((neighbor, weight) in getNeighborMap(name)) {
