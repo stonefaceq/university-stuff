@@ -77,7 +77,7 @@ open class Graph<T> {
     }
 
 
-    fun findMinSpanTreeKruskal(): MinimumSpanningTree<T> { //works not as intended; edges display two times (for example, 1--3 and 3--1)
+    fun findMinSpanTreeKruskal(): MinimumSpanningTree<T> { //finding minimum spanning tree using Kruskal's algorithm and class UnionFind
         val minimumSpanningTree = MinimumSpanningTree<T>()
         if (vertices.isEmpty()) {
             return minimumSpanningTree
@@ -85,6 +85,9 @@ open class Graph<T> {
         val allEdges = mutableListOf<Pair<Pair<T, T>, Int>>() // edge consists of a pair of vertices and its weight
         for ((name1, vertex1) in vertices) {
             for ((vertex2, weight) in vertex1.neighbors) {
+                if (allEdges.contains(Pair(Pair(vertex2.name, name1), weight))){ //we check if this edge is already used, but in different order
+                    continue                                                     //for example, we don't need edge "3--1" if we already have "1--3"
+                }
                 val edge = Pair(Pair(name1, vertex2.name), weight)
                 allEdges.add(edge)
             }
