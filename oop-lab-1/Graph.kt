@@ -2,11 +2,11 @@ import java.lang.IllegalArgumentException
 
 open class Graph<T> {
     //i didn't use class Edge here, instead i used mutable maps to save data about edges and their weight
-    protected data class Vertex<T>(val name: T) {
+    public data class Vertex<T>(val name: T) {
         val neighbors = mutableMapOf<Vertex<T>, Int>() //used to save info about neighbors, as well as edge's weight
     }
 
-    private val vertices = mutableMapOf<T, Vertex<T>>() //vertices are saved as maps containing their name T as keys and objects of class Vertex as values
+    public val vertices = mutableMapOf<T, Vertex<T>>() //vertices are saved as maps containing their name T as keys and objects of class Vertex as values
 
     fun addVertex(name: T) {
 
@@ -143,7 +143,7 @@ open class Graph<T> {
         fun showNeighbors(name: T) {
 
             for ((neighbor, weight) in getNeighborMap(name)) {
-                println("neighbor: $neighbor, weight: $weight\n")
+                println("neighbor: ${neighbor.toString()}, weight: ${weight.toString()}\n")
             }
 
 
@@ -154,6 +154,7 @@ open class Graph<T> {
             return vertices[name] ?: throw IllegalArgumentException()
         }
     }
+
 
 
 

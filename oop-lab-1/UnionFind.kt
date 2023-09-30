@@ -10,7 +10,8 @@ class UnionFind<T> {
         rank[element] = 0
     }
 
-    //finding a "parent", meaning root element, gives us info about connectivity component. if two vertices have same parent = they belong to the same component.
+    //finding a "parent", meaning root element, gives us info about connectivity component.
+    // if two vertices have same parent = they belong to the same component.
     fun findParent(element: T) : T {
         if (element != parent[element]) {
             parent[element] = findParent(parent[element]!!)
