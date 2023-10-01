@@ -12,22 +12,22 @@ abstract class Book(val name : String, val year: String, val author: String) {
             "episodic" -> Character(name, RoleEnums.EPISODIC)
             else -> throw IllegalArgumentException()
         }
-        characters.put(name, character.role)
+        characters[name] = character.role
     }
 
     fun addCharacter(character : Character) {
-        characters.put(character.name, character.role)
+        characters[character.name] = character.role
     }
-    open var annotation : String = ""
+
 
     fun printCharacters() {
         for (hero in characters) {
             println("Hero name: ${hero.key}, hero role: ${hero.value}")
         }
     }
+    open var annotation : String = ""
 
-
-    abstract fun showBookData(name: String)
+    abstract fun showBookData()
 
     override fun toString(): String {
         return name
