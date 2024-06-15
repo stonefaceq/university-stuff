@@ -1,0 +1,102 @@
+\doxysection{Red\+Black\+Tree Class Reference}
+\hypertarget{class_red_black_tree}{}\label{class_red_black_tree}\index{RedBlackTree@{RedBlackTree}}
+
+
+Represents a Red-\/\+Black Tree.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_red_black_tree_a16706b7c753cf2d86514cda01840abd9}\label{class_red_black_tree_a16706b7c753cf2d86514cda01840abd9} 
+{\bfseries Red\+Black\+Tree} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_red_black_tree}{Red\+Black\+Tree}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_red_black_tree_a91fde72dbd4680fa00ee3c091ef1bf2d}{insert}} (const std\+::complex$<$ double $>$ \&)
+\begin{DoxyCompactList}\small\item\em Inserts a new data element into the tree. \end{DoxyCompactList}\item 
+\Hypertarget{class_red_black_tree_a82b5f5dd783242023dc984057c380653}\label{class_red_black_tree_a82b5f5dd783242023dc984057c380653} 
+void {\bfseries inorder} ()
+\begin{DoxyCompactList}\small\item\em Prints the elements of the tree in sorted order. \end{DoxyCompactList}\item 
+std\+::complex$<$ double $>$ \mbox{\hyperlink{class_red_black_tree_a369b9c8b1f53f05bb9bddb6a3db5038e}{select}} (int k)
+\begin{DoxyCompactList}\small\item\em Selects the k-\/th smallest element in the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_red_black_tree_a29215dc8f02d01428c97eedb59f68812}\label{class_red_black_tree_a29215dc8f02d01428c97eedb59f68812} 
+void {\bfseries rotate\+Left} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}\&)
+\item 
+\Hypertarget{class_red_black_tree_a7d1c2353e1f314f71d492487425bc3d3}\label{class_red_black_tree_a7d1c2353e1f314f71d492487425bc3d3} 
+void {\bfseries rotate\+Right} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}\&)
+\item 
+\Hypertarget{class_red_black_tree_a6f681b4938f7ad9ea6d7642fa3c26c45}\label{class_red_black_tree_a6f681b4938f7ad9ea6d7642fa3c26c45} 
+void {\bfseries fix\+Violation} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}\&)
+\item 
+\Hypertarget{class_red_black_tree_a5184ce8e27b595217cad6437f8de3c89}\label{class_red_black_tree_a5184ce8e27b595217cad6437f8de3c89} 
+void {\bfseries inorder\+Helper} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*})
+\item 
+\Hypertarget{class_red_black_tree_ab5379dddc1861341d876c8d982181567}\label{class_red_black_tree_ab5379dddc1861341d876c8d982181567} 
+\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} {\bfseries select\+Helper} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}, int)
+\item 
+\Hypertarget{class_red_black_tree_a2ddd9717612f125df4da66338b8fb75c}\label{class_red_black_tree_a2ddd9717612f125df4da66338b8fb75c} 
+int {\bfseries size} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}node)
+\item 
+\Hypertarget{class_red_black_tree_a2810a557b95fea98faa939aeab183999}\label{class_red_black_tree_a2810a557b95fea98faa939aeab183999} 
+void {\bfseries update\+Size} (\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*}node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_red_black_tree_a54f97b09130fb7fb10ba2790c4b389ac}\label{class_red_black_tree_a54f97b09130fb7fb10ba2790c4b389ac} 
+\mbox{\hyperlink{struct_node}{Node}} \texorpdfstring{$\ast$}{*} {\bfseries root}
+\item 
+\Hypertarget{class_red_black_tree_aa595df9e9a3332cb45863ac9c7072bf7}\label{class_red_black_tree_aa595df9e9a3332cb45863ac9c7072bf7} 
+std\+::mutex {\bfseries tree\+\_\+mutex}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a Red-\/\+Black Tree. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_red_black_tree_a91fde72dbd4680fa00ee3c091ef1bf2d}\index{RedBlackTree@{RedBlackTree}!insert@{insert}}
+\index{insert@{insert}!RedBlackTree@{RedBlackTree}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{class_red_black_tree_a91fde72dbd4680fa00ee3c091ef1bf2d} 
+void Red\+Black\+Tree\+::insert (\begin{DoxyParamCaption}\item[{const std\+::complex$<$ double $>$ \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a new data element into the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to insert. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_red_black_tree_a369b9c8b1f53f05bb9bddb6a3db5038e}\index{RedBlackTree@{RedBlackTree}!select@{select}}
+\index{select@{select}!RedBlackTree@{RedBlackTree}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily \label{class_red_black_tree_a369b9c8b1f53f05bb9bddb6a3db5038e} 
+std\+::complex$<$ double $>$ Red\+Black\+Tree\+::select (\begin{DoxyParamCaption}\item[{int}]{k}{}\end{DoxyParamCaption})}
+
+
+
+Selects the k-\/th smallest element in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The order of the element to select (0-\/based index). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The k-\/th smallest element in the tree. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if k is out of range. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/uniprojects/university-\/stuff/oop-\/lab-\/6/\+Console\+Application2/\+Console\+Application2/main.\+cpp\end{DoxyCompactItemize}
