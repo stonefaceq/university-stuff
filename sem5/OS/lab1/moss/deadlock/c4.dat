@@ -1,0 +1,8 @@
+C 10    // think for 10 ms
+R 4     // request left fork 
+C 10    // wait for 10 ms
+R 0     // request right fork 
+C 20    // eat for 20 ms
+F 0     // release right fork
+F 4     // release left fork
+H       
