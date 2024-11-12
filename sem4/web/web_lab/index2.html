@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Monkeys central</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='css/base.css'>
+  <link rel='stylesheet' href='css/header.css'>
+  <link rel='stylesheet' href='css/main.css'>
+  <link rel='stylesheet' href='css/menu.css'>
+  <link rel='stylesheet' href='css/slider.css'>
+  <link rel='stylesheet' href='css/footer.css'>
+  <link rel='stylesheet' href='css/form.css'>
+  <link rel='stylesheet' href='css/monkey.css'>
+  <link rel='stylesheet' href='css/about_us.css'>
+
+  <script src="js/form.js"></script>
+  <script src="js/monkey.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans" />
+</head>
+
+<body>
+  <header>
+    <div class="header_block">
+      <div class="left_block">
+        <img src="images/monkeylogo.jpg" alt="Monkeys central" class="logo">
+        <div class="logo_text">
+          <h2>Monkeys central</h2>
+          <h4>All you need to know about monkeys</h4>
+        </div>
+      </div>
+      <div class="right_block">
+        <p class="contacts_text">+38(050)-987-65-43</p>
+        <p class="contacts_text">+38(099)-123-45-67</p>
+        <a class="contacts_ref" onclick="openForm()">Give us your feedback!</a>
+      </div>
+    </div>
+  </header>
+  <div class="menu">
+    <div class="menu_body">
+      <ul>
+        <li><a class="menu_ref" href="index.html">Main</a><span class="menu_ref"> | </span>
+        </li>
+        <li><a class="menu_ref" href="index.html">Catalogue</a> <span class="menu_ref"> | </span>
+        </li>
+        <li><a class="menu_ref" href="aboutUs.html">About us</a> <span class="menu_ref"> | </span>
+        </li>
+        <li><a class="menu_ref" href="contacts.html">Contacts</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slider">
+    <img class="slide" src="images/capuchin.jpg" alt="Slide 1">
+    <img class="slide" src="images/baboon.jpg" alt="Slide 2">
+    <img class="slide" src="images/gibbon.jpg" alt="Slide 3">
+    <img class="slide" src="images/macaque.jpg" alt="Slide 4">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <script src="js/slider.js"></script>
+
+  <main class="main">
+    <div class="main__central">
+      <div class="main__sub-menu">
+        <div class="main__menu-body">
+          <a class="main__menu-link" href="index.html">Main</a><span class="main__menu-link"> / </span>
+          <a class="main__menu-link" href="index.html">Catalogue</a>
+        </div>
+      </div>
+      <div class="main__central-content">
+        <div class="main__sidebar">
+          <div class="main__sidebar-block">
+            <ul class="main__items-menu">
+              <li>
+                <h3>Menu: </h3>
+                <ul>
+                  <li><a class="main__menu-link" href="#">Old world monkeys</a></li>
+                  <li><a class="main__menu-link" href="#">New world monkeys</a></li>
+                  <li><a class="main__menu-link" href="#">Apes</a></li>
+                  <li><a class="main__menu-link" href="#">Other primates</a></li>
+                </ul>
+              </li>
+              <li>
+                <h3>More info:</h3>
+                <ul>
+                  <li><a class="main__side-link" href="contacts.html">Contacts</a></li>
+                  <li><a class="main__side-link" href="aboutUs.html">About us </a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="main__content-wrapper">
+          <div class="main__content">
+            <div class="card" onclick="onMonkeyClick('White-eyelid mangabey', 'Africa', 'images/cercocebus.jpg')">
+              <div class="card_img"><img alt="White-eyelid mangabey" src="images/cercocebus.jpg">
+              </div>
+              <h5 class="card_name">White-eyelid mangabey</h5>
+              <h2 class="item_price">Africa</h2>
+            </div>
+            <div class="card" onclick="onMonkeyClick('Red colobus', 'Africa', 'images/piliocolobus.jpg')">
+              <div class="card_img"><img alt="Red colobus" src="images/piliocolobus.jpg">
+              </div>
+              <h5 class="card_name">Red colobus</h5>
+              <h2 class="item_price">Africa</h2>
+            </div>
+            <div class="card" onclick="onMonkeyClick('Semnopithecus', 'Asia', 'images/semnopithecus.jpg')">
+              <div class="card_img"><img alt="Semnopithecus" src="images/semnopithecus.jpg">
+              </div>
+              <h5 class="card_name">Semnopithecus</h5>
+              <h2 class="item_price">Asia</h2>
+            </div>
+            <div class="card" onclick="onMonkeyClick('Presbytis', 'Asia', 'images/presbytis.jpg')">
+              <div class="card_img"><img alt="Presbytis" src="images/presbytis.jpg">
+              </div>
+              <h5 class="card_name">Presbytis</h5>
+              <h2 class="item_price">Asia</h2>
+            </div>
+            <div class="card" onclick="onMonkeyClick('Douc', 'Asia', 'images/douc.jpg')">
+              <div class="card_img"><img alt="Douc" src="images/douc.jpg">
+              </div>
+              <h5 class="card_name">Douc</h5>
+              <h2 class="item_price">Asia</h2>
+            </div>
+            <div class="card" onclick="onMonkeyClick('Erythrocebus', 'Africa', 'images/patas.jpg')">
+              <div class="card_img"><img alt="Erythrocebus" src="images/patas.jpg">
+              </div>
+              <h5 class="card_name">Erythrocebus</h5>
+              <h2 class="item_price">Africa</h2>
+            </div>
+          </div>
+          <div class="main__pagination-holder">
+            <div class="main__pagination">
+              <a class="arrow" href="index.html">&laquo;</a>
+              <a class="page_number" href="#">1</a>
+              <a class ="page_number active" href="index2.html">2</a>
+              <a class="arrow" href="index.html">&raquo;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="main__lower">
+        <div>
+          <p>Our website aims to spread information about monkeys, attract people to study the basics of primatology and popularize the fight against violence against animals. </p>
+        </div>
+        <div>
+          <p>
+            Contact us with suggestions, comments or errors. Every feedback is important for the fight for the life of monkeys and for the humane attitude of people towards wild nature in general.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer_wrapper">
+      <div class="footer_div">
+        <div class="footer_left">
+          <p>© 2024 Monkey central </p>
+        </div>
+        <div>
+          <ul>
+            <li><a class="footer_ref" href="index.html">Main</a></li>
+            <li><a class="footer_ref" href="index.html">Monkeys</a></li>
+            <li><a class="footer_ref" href="aboutUs.html">About us</a></li>
+            <li><a class="footer_ref" href="contacts.html">Contacts</a></li>
+          </ul>
+        </div>
+        <div class="footer_right">
+            <p>+38(099)-123-45-67</p>
+            <p>monkey@monkeys.com</p>
+          </div>
+      </div>
+    </div>
+  </footer>
+  <div class="form-popup" id="popup_form">
+    <div class="form-wrapper">
+      <button type="button" class="close-button" onclick="closeForm()">x</button>
+      <form>
+        <h2>Feedback</h2>
+        <label for="name">Your name:</label>
+        <input type="text" placeholder="" name="name" required>
+        <label for="phone">Your phone:</label>
+        <input type="tel" placeholder="" name="phone" required>
+        <label for="email">Email: </label>
+        <input type="email" placeholder="" name="email" required>
+        <label for="message">Message: </label>
+        <textarea name="message" rows="8" cols="30" placeholder=""></textarea>
+        <button type="submit" class="submit-button">Send</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

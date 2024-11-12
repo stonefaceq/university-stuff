@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333333; 
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+}
+
+.monkey-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid #525252; 
+    background-color: #575757; 
+    border-radius: 5px;
+    margin: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.monkey-detail__image img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #E0E0E0; 
+    border-radius: 5px 5px 0 0;
+}
+
+.monkey-detail__title {
+    margin: 1rem 0;
+    color: #ffffff; 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.monkey-detail__continents {
+    color: #ffffff; 
+    font-size: 2rem;
+}
+
+.monkey-detail__description {
+    color: #ffffff; 
+    margin: 1rem 0;
+}
+
+
+@media (max-width: 600px) {
+    .monkey-detail {
+      padding: 0.5rem;
+    }
+
+    .monkey-detail__image img {
+      max-width: 80%;
+    }
+
+    .monkey-detail__title {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .monkey-detail__continents {
+      font-size: 1rem;
+    }
+
+    .monkey-detail__description {
+      margin: 0.5rem 0;
+    }
+
+    .monkey-detail__buy-button {
+      padding: 5px 10px;
+    }
+}
+
+.monkey-detail__wiki-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1b7a18; 
+    color: #FFF; 
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.monkey-detail__wiki-button:hover {
+    background-color: #1ab614; 
+    color: #FFF; 
+}
+

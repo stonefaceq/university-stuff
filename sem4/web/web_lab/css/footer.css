@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "PT Sans";
+    src: url("https://fonts.google.com/specimen/PT+Sans");
+}
+
+footer {
+    background-color: #818181;
+  }
+  
+  .footer_wrapper {
+    padding: 20px;
+  }
+  
+  .footer_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    font-size: 0.8em;
+  }
+  
+  @media screen and (max-width: 420px) {
+    .footer_div {
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  }
+  
+  .footer_ref,
+  .footer_div p {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 0.7em;
+  }
+  
+  .footer_ref:hover {
+    font-weight: bold;
+    text-shadow: #f0f0f082 0 0 12px;
+  }
+  
+  .footer_div ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer_div ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer_right {
+    margin-left: auto;
+  }
+  
+  .footer_left {
+    margin-right: auto;
+  }
+  

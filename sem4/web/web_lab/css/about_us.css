@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "PT Sans";
+    src: url("https://fonts.google.com/specimen/PT+Sans");
+}
+
+.about-us {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #575757;
+}
+
+.about-us h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+
+.about-us__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.about-us__image {
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.about-us__image img {
+    width: 100%;
+    height: auto;
+}
+
+.about-us__text {
+    flex-basis: 48%;
+    max-width: 100%;
+}
+
+.about-us__text p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.about-us__text ul {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.about-us__text ul li {
+    list-style-type: disc;
+}
+
+.about-us__text a {
+    color: #1b7a18;
+    text-decoration: none;
+}
+
+.about-us__text a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-us__content {
+        flex-direction: column;
+    }
+
+    .about-us__image {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .about-us__text {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "PT Sans";
+    src: url("https://fonts.google.com/specimen/PT+Sans");
+}
+
+body{
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0;
+    background-color: #F0F0F0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+} 
+
+.header_block , .menu_body{
+    margin-left: 10px;
+    margin-right: 10px;
+}

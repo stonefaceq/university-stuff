@@ -1,0 +1,88 @@
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.form-popup {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1s;
+}
+
+.form-wrapper {
+  width: 40%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  max-height: 100vh; /* Add this line */
+  overflow-y: auto; /* Add this line */
+}
+
+.close-button {
+  float: right;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #666;
+}
+
+form h2 {
+  text-align: center;
+  color: #444;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #777;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 700px) {
+  .form-wrapper {
+    width: 80%;
+  }
+}
