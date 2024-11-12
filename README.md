@@ -57,7 +57,7 @@ My university stuff lol
         <li><a href="./sem5/Modelling_systems">Modelling systems</a></li>
         <li><a href="./sem5/Numerical_methods">Numerical methods</a></li>
         <li><a href="./sem5/OS">Operating systems</a></li>
-        <li><a href="./sem4/nosql">NoSQL</a></li>
+        <li><a href="./sem5/nosql">NoSQL</a></li>
     </td>
   </tr>
   <tr>
