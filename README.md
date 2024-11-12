@@ -71,8 +71,8 @@ My university stuff lol
 To get started with this project, clone the repository and navigate to the relevant folders based on your needs.
 
 ```bash
-git clone https://github.com/Ke11nyk/Uni-materials
-cd Uni-materials
+git clone https://github.com/stonefaceq/university-stuff
+cd university-stuff
 ```
 
 For more detailed information about each component, please refer to the README files within each folder.
