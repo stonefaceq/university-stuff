@@ -1,0 +1,194 @@
+#include <iostream>
+#include <complex>
+#include <vector>
+
+enum Color { RED, BLACK }; //вершина може бути червона або чорна 
+
+struct Node { //опис вершини
+    std::complex<double> data;
+    Color color;
+    Node* left, * right, * parent;
+
+    Node(std::complex<double> data) : data(data) {
+        parent = left = right = nullptr;
+        color = RED;
+    }
+};
+
+class RedBlackTree { //клас дерева
+private:
+    Node* root;
+
+    void rotateLeft(Node*&);
+    void rotateRight(Node*&);
+    void fixViolation(Node*&);
+
+    void inorderHelper(Node*);
+
+public:
+    RedBlackTree() : root(nullptr) {}
+
+    void insert(const std::complex<double>&);
+    void inorder();
+};
+
+void RedBlackTree::rotateLeft(Node*& ptr) { //лівий поворот
+    Node* right_child = ptr->right;
+    ptr->right = right_child->left;
+
+    if (ptr->right != nullptr)
+        ptr->right->parent = ptr;
+
+    right_child->parent = ptr->parent;
+
+    if (ptr->parent == nullptr)
+        root = right_child;
+    else if (ptr == ptr->parent->left)
+        ptr->parent->left = right_child;
+    else
+        ptr->parent->right = right_child;
+
+    right_child->left = ptr;
+    ptr->parent = right_child;
+}
+
+void RedBlackTree::rotateRight(Node*& ptr) { //правий поворот
+    Node* left_child = ptr->left;
+    ptr->left = left_child->right;
+
+    if (ptr->left != nullptr)
+        ptr->left->parent = ptr;
+
+    left_child->parent = ptr->parent;
+
+    if (ptr->parent == nullptr)
+        root = left_child;
+    else if (ptr == ptr->parent->left)
+        ptr->parent->left = left_child;
+    else
+        ptr->parent->right = left_child;
+
+    left_child->right = ptr;
+    ptr->parent = left_child;
+}
+
+void RedBlackTree::fixViolation(Node*& ptr) { //виправлення порушень ЧЧ-дерева
+    Node* parent_ptr = nullptr;
+    Node* grand_parent_ptr = nullptr;
+
+    while ((ptr != root) && (ptr->color != BLACK) && (ptr->parent->color == RED)) {
+        parent_ptr = ptr->parent;
+        grand_parent_ptr = ptr->parent->parent;
+
+        if (parent_ptr == grand_parent_ptr->left) {
+            Node* uncle_ptr = grand_parent_ptr->right;
+
+            if (uncle_ptr != nullptr && uncle_ptr->color == RED) {
+                grand_parent_ptr->color = RED;
+                parent_ptr->color = BLACK;
+                uncle_ptr->color = BLACK;
+                ptr = grand_parent_ptr;
+            }
+            else {
+                if (ptr == parent_ptr->right) {
+                    rotateLeft(parent_ptr);
+                    ptr = parent_ptr;
+                    parent_ptr = ptr->parent;
+                }
+
+                rotateRight(grand_parent_ptr);
+                std::swap(parent_ptr->color, grand_parent_ptr->color);
+                ptr = parent_ptr;
+            }
+        }
+        else {
+            Node* uncle_ptr = grand_parent_ptr->left;
+
+            if ((uncle_ptr != nullptr) && (uncle_ptr->color == RED)) {
+                grand_parent_ptr->color = RED;
+                parent_ptr->color = BLACK;
+                uncle_ptr->color = BLACK;
+                ptr = grand_parent_ptr;
+            }
+            else {
+                if (ptr == parent_ptr->left) {
+                    rotateRight(parent_ptr);
+                    ptr = parent_ptr;
+                    parent_ptr = ptr->parent;
+                }
+
+                rotateLeft(grand_parent_ptr);
+                std::swap(parent_ptr->color, grand_parent_ptr->color);
+                ptr = parent_ptr;
+            }
+        }
+    }
+
+    root->color = BLACK;
+}
+
+void RedBlackTree::insert(const std::complex<double>& data) { //вставка в дерево
+    Node* new_node = new Node(data);
+    if (root == nullptr) {
+        new_node->color = BLACK;
+        root = new_node;
+    }
+    else {
+        Node* ptr = root;
+        Node* parent = nullptr;
+        while (ptr != nullptr) {
+            parent = ptr;
+            if (data.real() < ptr->data.real() || (data.real() == ptr->data.real() && data.imag() < ptr->data.imag()))
+                ptr = ptr->left;
+            else
+                ptr = ptr->right;
+        }
+
+        new_node->parent = parent;
+        if (data.real() < parent->data.real() || (data.real() == parent->data.real() && data.imag() < parent->data.imag()))
+            parent->left = new_node;
+        else
+            parent->right = new_node;
+
+        fixViolation(new_node);
+    }
+}
+
+void RedBlackTree::inorderHelper(Node* ptr) { //допоміжна функція для вивову елементів у відсортованому порядку
+    if (ptr == nullptr)
+        return;
+
+    inorderHelper(ptr->left);
+    std::cout << ptr->data << " ";
+    inorderHelper(ptr->right);
+}
+
+void RedBlackTree::inorder() {//вивід елементів у відсорт. порядку
+    inorderHelper(root);
+}
+
+int main() { //основна функція
+    RedBlackTree tree;
+
+    // Додавання комплексних чисел
+    tree.insert(std::complex<double>(3, 2));
+    tree.insert(std::complex<double>(7, -1));
+    tree.insert(std::complex<double>(1, 5));
+    tree.insert(std::complex<double>(4, 3));
+
+    std::cout << "Step 1. Inorder traversal of the constructed tree is: ";
+    tree.inorder();
+    std::cout << std::endl;
+
+    tree.insert(std::complex<double>(6, 0));
+    tree.insert(std::complex<double>(10, 2));
+    tree.insert(std::complex<double>(2, 4));
+    tree.insert(std::complex<double>(5, 1));
+
+    // Вивід комплексних чисел у порядку зростання
+    std::cout << "Step 2. Inorder traversal of the constructed tree is: ";
+    tree.inorder();
+    std::cout << std::endl;
+
+    return 0;
+}
