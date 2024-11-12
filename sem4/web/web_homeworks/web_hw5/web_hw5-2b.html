@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sem.5 Task 2b</title>
+
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container{
+            display: grid;
+            width:inherit;
+            height:inherit;
+            grid-template-areas:
+            "hd hd hd hd"
+            "a b c d"
+            "e f g h"
+            "i j . ."
+            "ft ft ft ft"
+            ;
+        }
+        .panel, .footer, .header{
+            background-color: gray;
+            color:white;
+            border-radius:3px;
+            font-family: Arial,serif;
+
+            margin: 4px;
+            padding:12px;
+        }
+
+        .header{
+            grid-area: hd;
+        }
+
+        #A{
+            grid-area: a;
+        }
+
+        #B{
+            grid-area: b;
+        }
+
+        #C{
+            grid-area: c;
+        }
+
+        #D{
+            grid-area: d;
+        }
+
+        #E{
+            grid-area: e;
+        }
+
+        #F{
+            grid-area: f;
+        }
+
+        #G{
+            grid-area: g;
+        }
+
+        #I{
+            grid-area: i;
+        }
+
+        #J{
+            grid-area: j;
+        }
+
+        #H{
+            grid-area: h;
+        }
+
+        .footer{
+            grid-area: ft;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">My header</div>
+        <div class="panel" id="A">Panel A</div>
+        <div class="panel" id="B">Panel B</div>
+        <div class="panel" id="C">Panel C</div>
+        <div class="panel" id="D">Panel D</div>
+        <div class="panel" id="E">Panel E</div>
+        <div class="panel" id="F">Panel F</div>
+        <div class="panel" id="G">Panel G</div>
+        <div class="panel" id="H">Panel H</div>
+        <div class="panel" id="I">Panel I</div>
+        <div class="panel" id="J">Panel J</div>
+        <div class="footer">My footer</div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sem.5 Task 1a</title>
+
+    <style>
+        .container_main{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 45vh;
+            width: 95vw;
+        }
+
+        .container_inner{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            min-width: 33%;
+        }
+
+        .block{
+            margin: 0.6%;
+            display: flex;
+            border-radius: 0.5em;
+        }
+
+        #r1{
+            height: 67%;
+            width: 100%;
+            background-color: indianred;
+        }
+
+        #r2{
+            height: 72%;
+            width: 100%;
+            background-color: indianred;
+        }
+
+        #r3{
+            height: 19%;
+            width: 72%;
+            background-color: indianred;
+        }
+
+        #p1{
+            height: 40%;
+            width: 98%;
+            background-color: rebeccapurple;
+        }
+
+        #p2{
+            height: 34%;
+            width: 98%;
+            background-color: rebeccapurple;
+        }
+
+        #p3{
+            height: 50%;
+            width: 98%;
+            background-color: rebeccapurple;
+        }
+
+        #g1{
+            height: 30%;
+            width: 48.5%;
+            background-color: mediumseagreen;
+        }
+
+        #g2{
+            height: 28%;
+            width: 98%;
+            background-color: mediumseagreen;
+        }
+
+        #g3{
+            height: 65%;
+            width: 48.5%;
+            background-color: mediumseagreen;
+        }
+
+        #g4{
+            height: 17%;
+            width: 98%;
+            background-color: mediumseagreen;
+        }
+
+        #b1{
+            height: 27%;
+            width: 100%;
+            background-color: cornflowerblue;
+        }
+
+        #b2{
+            height: 25%;
+            width: 100%;
+            background-color: cornflowerblue;
+        }
+
+        #b3{
+            height: 19%;
+            width: 25%;
+            background-color: cornflowerblue;
+        }
+
+        #b4{
+            height: 12%;
+            width: 98%;
+            background-color: cornflowerblue;
+        }
+
+        #additional_1{
+            flex-direction: column;
+            justify-content: space-around;
+            height: 30%;
+            width: 48.5%;
+        }
+
+        #additional_2{
+            flex-direction: column;
+            justify-content: space-around;
+            height: 65%;
+            width: 48.5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container_main">
+        <div class="container_inner">
+            <div class="block" id = "p1"></div>
+            <div class="block" id = "g1"></div>
+            <div class="block" id = "additional_1">
+                <div class="block" id="b1"></div>
+                <div class="block" id="r1"></div>
+            </div>
+            <div class="block" id = "g2"></div>
+        </div>
+        <div class="container_inner">
+            <div class="block" id = "g3"></div>
+            <div class="block" id = "additional_2">
+                <div class="block" id = "b2"></div>
+                <div class="block" id = "r2"></div>
+            </div>
+            <div class="block" id = "p2"></div>
+        </div>
+        <div class="container_inner">
+            <div class="block" id = "g4"></div>
+            <div class="block" id = "b3"></div>
+            <div class="block" id = "r3"></div>
+            <div class="block" id = "p3"></div>
+            <div class="block" id = "b4"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body, #total_price{
+          margin: 20px 20px 20px 20px;
+      }
+      #flag{
+        max-width: 300px;
+        max-height: 200px;
+        min-width: 200px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      #get_price{
+          margin-top: 20px;
+      }
+      .price, #total_price{
+          font-weight: bolder
+      }
+    </style>
+</head>
+<body>
+  <form id = "form">
+    <h2>Choose the country:</h2>
+    <select id = "country_choice">
+        <option value="None" id = "None">None</option>
+        <option value="Spain" id = "Spain">Spain</option>
+        <option value="Brazil" id = "Brazil">Brazil</option>
+        <option value="Thailand" id = "Thailand">Thailand</option>
+        <option value="Japan" id = "Japan">Japan</option>
+        <option value="Algeria" id = "Algeria">Algeria</option>
+    </select>
+  </form>
+  <div id = "content" style="display: none">
+    <img id="flag" src=" ">
+    <form id="places">
+        <h3>Choose the places to go:</h3>
+        <div class="container-fluid" id="place_choice">
+            <div class="row">
+                <div class="col-sm-4 place-container">
+                    <input type="checkbox" id="place_1" name="countryChoice" value = "place_1">
+                    <h2 id="title_1"></h2>
+                    <img class="place-img img-fluid" id="img_1" src="">
+                    <p id="desc_1"></p>
+                    <div class="price"><span>Price </span><span id="price_1"></span><span> $</span></div>
+                </div>
+                <div class="col-sm-4 place-container">
+                    <input type="checkbox" id="place_2" name="countryChoice" value = "place_2">
+                    <h2 id="title_2"></h2>
+                    <img class="place-img img-fluid" id="img_2" src="">
+                    <p id="desc_2"></p>
+                    <div class="price"><span>Price </span><span id="price_2"></span><span> $</span></div>
+                </div>
+                <div class="col-sm-4 place-container">
+                    <input type="checkbox" id="place_3" name="countryChoice" value = "place_3">
+                    <h2 id="title_3"></h2>
+                    <img class="place-img img-fluid" id="img_3" src="">
+                    <p id="desc_3"></p>
+                    <div class="price"><span>Price </span><span id="price_3"></span><span> $</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total_price" id="get_price" >
+            <button type="button" id = "get_price_button" class="btn btn-primary btn-m">Count total price</button>
+            <span id="total_price"></span>
+        </div>
+    </form>
+
+      <script>
+          let countrySelection = document.getElementById('country_choice');
+          countrySelection.addEventListener('change', function (){
+              const selectedValue = countrySelection.value;
+              console.log('Selected option:', selectedValue);
+
+              if(selectedValue === "None"){
+                  document.getElementById('content').style.display = "none";
+              }
+              else{
+                  document.getElementById('place_1').checked = false;
+                  document.getElementById('place_2').checked = false;
+                  document.getElementById('place_3').checked = false;
+                  document.getElementById("total_price").innerHTML = "";
+
+                  document.getElementById('content').style.display = "block";
+
+                  switch (selectedValue) {
+                      case "Spain":{
+                          showSpain();
+                          break;
+                      }
+                      case "Brazil":{
+                          showBrazil();
+                          break;
+                      }
+                      case "Thailand":{
+                          showThailand();
+                          break;
+                      }
+                      case "Japan":{
+                          showJapan();
+                          break;
+                      }
+                      case "Algeria":{
+                          showAlgeria();
+                          break;
+                      }
+                  }
+              }
+          });
+
+          function showSpain(){
+              document.getElementById("flag").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1920px-Bandera_de_Espa%C3%B1a.svg.png";
+
+              document.getElementById("title_1").innerHTML = "Sagrada Familia and Gaudí Sites";
+              document.getElementById("img_1").src = "https://news.artnet.com/app/news-upload/2019/06/Sagrada-Familia.jpg";
+              document.getElementById("desc_1").innerHTML = "The Sagrada Familia Crypt is the final resting place of the mastermind architect behind the Basilica - Antoni Gaudi. Recognized by UNESCO as a World Heritage Site, the crypt was the first venue within the Sagrada Basilica to open its doors to the public for worship. Every Sunday, mass is held within the crypt.";
+              document.getElementById("price_1").innerHTML = "100";
+
+              document.getElementById("title_2").innerHTML = "The Alhambra and Generalife Gardens";
+              document.getElementById("img_2").src = "https://cdn.kimkim.com/files/a/images/894b11252e0c5b3c4829352dc434a217b08f85e2/big-bbdcc41e16ba96e757dfe2aeea5020aa.jpg";
+              document.getElementById("desc_2").innerHTML = "The Generalife served as the summer residence for the sultans of the Alhambra. It stand as a one-of-a-kind example of Arab art, giving us a rough impression of how these gardens were in the past.";
+              document.getElementById("price_2").innerHTML = "50";
+
+              document.getElementById("title_3").innerHTML = "Guggenheim Museum";
+              document.getElementById("img_3").src = "https://archeyes.com/wp-content/uploads/2023/07/david-vives-The-Guggenheim-MuseumBilbao-Spain-Frank-Gehry-titanium-ArchEyes-2.jpg";
+              document.getElementById("desc_3").innerHTML = "Designed by American architect Frank Gehry, the Guggenheim Museum Bilbao building represents a magnificent example of the most groundbreaking architecture of the 20th century. With 24,000 square meters of surface area, of which 11,000 are dedicated to exhibition space, the Museum represents an architectural landmark of audacious configuration and innovative design, providing a seductive backdrop for the art exhibited within it.";
+              document.getElementById("price_3").innerHTML = "60";
+          }
+
+          function showBrazil(){
+              document.getElementById("flag").src = "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png";
+
+              document.getElementById("title_1").innerHTML = "Cristo Redentor and Corcovado";
+              document.getElementById("img_1").src = "https://www.thoughtco.com/thmb/S3YU2hCvC0z8lhnKFK8yYmUQ8H0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/christredeemer-10139156-567c92283df78ccc15684502.jpg";
+              document.getElementById("desc_1").innerHTML = "Christ the Redeemer statue is the largest Art Deco design ever built in the history of the world. The statue portrays Jesus with arms open, symbolizing welcome and peace. Its construction was proposed in 1850 by priest Pedro Mario in honor of Emperor Pedro II's daughter, Princess Isabel.";
+              document.getElementById("price_1").innerHTML = "50";
+
+              document.getElementById("title_2").innerHTML = "Salvador's Pelourinho";
+              document.getElementById("img_2").src = "https://images.adsttc.com/media/images/646c/c2ca/42f1/0875/8984/51c4/large_jpg/o-pelourinho-em-salvador-da-arquitetura-colonial-ao-olodum_8.jpg?1684849366";
+              document.getElementById("desc_2").innerHTML = "Once the historic capital of Brazil during the early Portuguese colonial settlement, Pelourinho in Salvador de Bahia is filled with amazing architecture, historic churches and buildings to this well restored Unesco World Heritage site.";
+              document.getElementById("price_2").innerHTML = "40";
+
+              document.getElementById("title_3").innerHTML = "Pinacoteca do Estado de São Paulo";
+              document.getElementById("img_3").src = "https://arteforadomuseu.com.br/site/wp-content/uploads/2019/10/Pinacoteca-1.jpg";
+              document.getElementById("desc_3").innerHTML = "Pinacoteca do Estado, the city's oldest fine arts museum, reopened to the public in 1998 after Paulo Mendes da Rocha's intervention, which maintened the original 19th-century building as structure, adapting the spaces to the new functional needs of Pinacoteca.";
+              document.getElementById("price_3").innerHTML = "100";
+          }
+
+          function showThailand(){
+              document.getElementById("flag").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Thailand.svg/1920px-Flag_of_Thailand.svg.png";
+
+              document.getElementById("title_1").innerHTML = "The Grand Palace, Bangkok";
+              document.getElementById("img_1").src = "https://a.cdn-hotels.com/gdcs/production88/d1534/da0c22f3-443f-4b20-b38c-ee6d2ba97962.jpg";
+              document.getElementById("desc_1").innerHTML = "The Grand Palace (Phra Borom Maharatchawang) is a former royal residence in Bangkok that was consecrated in 1782. Today, it’s only used on ceremonial occasions, but it remains the city's biggest tourist attraction and a pilgrimage destination for devout Buddhists.";
+              document.getElementById("price_1").innerHTML = "30";
+
+              document.getElementById("title_2").innerHTML = "Sukhothai Old City";
+              document.getElementById("img_2").src = "https://blog.bangkokair.com/wp-content/uploads/2016/09/shutterstock_450500722-e1475058675210.jpg";
+              document.getElementById("desc_2").innerHTML = "Sukhothai is the very first capital City of Thailand. In the golden time of this city it is a center of everything on this south-east Asia. Now a day the ruin from that glorious time a left behind for people of this generation to study story about one of the ancient city that accept by United Nation Educational Scientific and Cultural Organization (UNESCO) to be World Heritage. ";
+              document.getElementById("price_2").innerHTML = "35";
+
+              document.getElementById("title_3").innerHTML = "Historic City of Ayutthaya";
+              document.getElementById("img_3").src = "https://cdn.elebase.io/173fe953-8a63-4a8a-8ca3-1bacb56d78a5/4215cccd-431f-49bf-a60d-43157e802800-ayutthaya-inline-04.jpg?q=75";
+              document.getElementById("desc_3").innerHTML = "The Historic City of Ayutthaya, founded in 1350, was the second capital of the Siamese Kingdom. It flourished from the 14th to the 18th centuries, during which time it grew to be one of the world's largest and most cosmopolitan urban areas and a center of global diplomacy and commerce.";
+              document.getElementById("price_3").innerHTML = "50";
+          }
+
+          function showJapan(){
+              document.getElementById("flag").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/1920px-Flag_of_Japan.svg.png";
+
+              document.getElementById("title_1").innerHTML = "Osaka Castle";
+              document.getElementById("img_1").src = "https://resources.matcha-jp.com/resize/720x2000/2023/03/28-136333.webp";
+              document.getElementById("desc_1").innerHTML = "Osaka Castle, or “Osaka-jo” in Japanese, is certainly one of the most famous landmarks in Japan, and for good reason. This five-story castle is one of the most visually spectacular creations in the country, with a history that dates back almost 450 years.";
+              document.getElementById("price_1").innerHTML = "70";
+
+              document.getElementById("title_2").innerHTML = "Hiroshima Peace Memorial Park";
+              document.getElementById("img_2").src = "https://upload.wikimedia.org/wikipedia/commons/7/77/Genbaku_Dome04-r.JPG";
+              document.getElementById("desc_2").innerHTML = "The Hiroshima Peace Memorial (Genbaku Dome) is the only structure left standing near the hypocenter of the first atomic bomb which exploded on 6 August 1945, and it remains in the condition right after the explosion. Through the efforts of many people, including those of the city of Hiroshima, this ruin has been preserved in the same state as immediately after the bombing.";
+              document.getElementById("price_2").innerHTML = "25";
+
+              document.getElementById("title_3").innerHTML = "Imperial Tokyo";
+              document.getElementById("img_3").src = "https://www.datocms-assets.com/101439/1702186167-tokyo-imperial-palace.jpg?auto=format&crop=focalpoint&fit=crop&fp-x=0.48&fp-y=0.51&h=800&w=1200";
+              document.getElementById("desc_3").innerHTML = "Home to the emperor of Japan, the Imperial Palace is built upon the site of Edo Castle, home to the Shogun before 1868. Protected by wide moats and thick walls and surrounded by meticulously kept gardens, the grounds offer a peaceful green contrast to the steel and glass of downtown Tokyo's modern office buildings.";
+              document.getElementById("price_3").innerHTML = "60";
+          }
+
+          function showAlgeria(){
+              document.getElementById("flag").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Algeria.svg/1920px-Flag_of_Algeria.svg.png";
+
+              document.getElementById("title_1").innerHTML = "Constantine";
+              document.getElementById("img_1").src = "https://www.adventurealgeria.com/wp-content/uploads/2021/01/constantine-algeria.jpg";
+              document.getElementById("desc_1").innerHTML = "Perched dramatically atop a plateau in northeastern Algeria, Constantine was one of the great surprises of my trip. One of the oldest cities in the world, Constantine traces its origins back over 2,500 years. Known as the ‘City of Bridges’, I was continually awed by the spectacular vistas over the deep gorges and ravines that carve their way through the landscapes.";
+              document.getElementById("price_1").innerHTML = "10";
+
+              document.getElementById("title_2").innerHTML = "Timgad";
+              document.getElementById("img_2").src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Timgad_%2815685889550%29.jpg/1200px-Timgad_%2815685889550%29.jpg";
+              document.getElementById("desc_2").innerHTML = "Timgad – located near Batna in northeastern Algeria – is a remarkable legacy of Roman urban planning and architecture. Founded by Emperor Trajan around 100 AD as a military colony, Timgad was originally designed as a bastion against the Berber tribes. Over time, it evolved into a thriving city, exemplifying the architectural and cultural grandeur of the Roman Empire in North Africa.";
+              document.getElementById("price_2").innerHTML = "20";
+
+              document.getElementById("title_3").innerHTML = "Djémila";
+              document.getElementById("img_3").src = "https://lp-cms-production.imgix.net/2023-04/Algeria%20Djemila%20Mltz%20shutterstock_2054712170%20RFC.jpg";
+              document.getElementById("desc_3").innerHTML = "Djémila is another outrageous example of Roman town planning. Known in ancient times as Cuicul, this UNESCO World Heritage site was founded as a military garrison in the 1st century AD. Djémila is celebrated for its expert integration of architectural masterpieces with the natural landscape, offering a window into the Roman Empire’s far-reaching influence.";
+              document.getElementById("price_3").innerHTML = "15";
+          }
+
+          let countPriceButton = document.getElementById('get_price_button');
+          countPriceButton.addEventListener('click', countPrice);
+          function countPrice(){
+              let cnt = 0;
+              console.log(cnt);
+              if(document.getElementById('place_1').checked){cnt += parseInt(document.getElementById("price_1").textContent);}
+              if(document.getElementById('place_2').checked){cnt += parseInt(document.getElementById("price_2").textContent);}
+              if(document.getElementById('place_3').checked){cnt += parseInt(document.getElementById("price_3").textContent);}
+              document.getElementById("total_price").innerHTML = cnt.toString() + " 	$";
+          }
+      </script>
+  </div>
+</body>
+</html>
