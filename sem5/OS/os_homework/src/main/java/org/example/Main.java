@@ -4,25 +4,26 @@ import java.util.Scanner;
 import java.util.*;
 
 public class Main {
-    private static Manager managerInstance;
-    private static final Map<String, CommandHandler> commandHandlers = new HashMap<>();
+    private static Manager managerInstance; // singleton instance of the Manager class
+    private static final Map<String, CommandHandler> commandHandlers = new HashMap<>(); // map to store commands and their handlers
 
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
 
-        initializeCommands(); // Ініціалізація команд
+        initializeCommands(); // initialize the available commands and their handlers
 
         System.out.println("Welcome to the Computation Manager!");
-        displayMenu(); // Виведення меню команд
+        displayMenu();
 
         while (true) {
             System.out.print("Enter a command: ");
-            String userCommand = inputScanner.nextLine().trim().toLowerCase(); // Приводимо команду до нижнього регістру
+            String userCommand = inputScanner.nextLine().trim().toLowerCase();
 
-            CommandHandler handler = commandHandlers.get(userCommand.split(" ")[0]); // Отримуємо обробник для першого слова
+            // retrieve the handler for the first word of the command
+            CommandHandler handler = commandHandlers.get(userCommand.split(" ")[0]);
 
             if (handler != null) {
-                handler.handle(userCommand); // Виконання обробки відповідної команди
+                handler.handle(userCommand);
             } else {
                 System.out.println("Invalid command. Please try again.");
             }
@@ -30,7 +31,6 @@ public class Main {
     }
 
     private static void initializeCommands() {
-        // Ініціалізація мапи з командами та їх відповідними обробниками
         commandHandlers.put("group", new GroupCommandHandler());
         commandHandlers.put("new", new NewComponentCommandHandler());
         commandHandlers.put("run", new RunCommandHandler());
@@ -47,12 +47,12 @@ public class Main {
         System.out.println("  exit - Exit the program.");
     }
 
-    // Абстракція для обробки команд
+    // interface for handling commands
     interface CommandHandler {
         void handle(String command);
     }
 
-    // Командний обробник для групи
+    // command handler for the "group" command
     static class GroupCommandHandler implements CommandHandler {
         @Override
         public void handle(String command) {
@@ -63,10 +63,12 @@ public class Main {
             }
 
             try {
+                // parse the value and create a new Manager instance
                 int value = Integer.parseInt(parts[1]);
                 managerInstance = new Manager(value);
                 System.out.println("Created a new computation group with value: " + value);
 
+                // set the time limit if provided
                 if (parts.length > 3 && "limit".equals(parts[2])) {
                     long timeLimit = Long.parseLong(parts[3]);
                     managerInstance.defineExecutionLimit(timeLimit);
@@ -78,7 +80,7 @@ public class Main {
         }
     }
 
-    // Командний обробник для нового компонента
+    // command handler for the "new" command to add computation components
     static class NewComponentCommandHandler implements CommandHandler {
         @Override
         public void handle(String command) {
@@ -94,6 +96,7 @@ public class Main {
             }
 
             try {
+                // Add a new computation component
                 String componentType = parts[1];
                 managerInstance.createComponent(componentType);
                 System.out.println("Added a new computation component with symbol: " + componentType);
@@ -103,7 +106,7 @@ public class Main {
         }
     }
 
-    // Командний обробник для запуску обчислень
+    // command handler for the "run" command to start computations
     static class RunCommandHandler implements CommandHandler {
         @Override
         public void handle(String command) {
@@ -111,12 +114,12 @@ public class Main {
                 System.out.println("No computation group created. Use 'group <x>' to create a group first.");
                 return;
             }
-            managerInstance.execute();
+            managerInstance.execute(); // execute all tasks in the Manager instance
             System.out.println("Computation manager started...");
         }
     }
 
-    // Командний обробник для показу результатів
+    // command handler for the "showsum" command to display results
     static class SummaryCommandHandler implements CommandHandler {
         @Override
         public void handle(String command) {
@@ -128,12 +131,12 @@ public class Main {
         }
     }
 
-    // Командний обробник для завершення програми
+    // command handler for the "exit" command to terminate the program
     static class ExitCommandHandler implements CommandHandler {
         @Override
         public void handle(String command) {
             System.out.println("Exiting the program...");
-            System.exit(0); // Завершує програму
+            System.exit(0);
         }
     }
 }
