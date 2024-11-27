@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Guns xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Gun id="10">
+        <Model>ShotGun</Model>
+        <Handy>One</Handy>
+        <Origin>United States of America</Origin>
+        <TTC>
+            <FiringRange>Short</FiringRange>
+            <SightingRange>10</SightingRange>
+            <Magazine>true</Magazine>
+            <Sight>true</Sight>
+        </TTC>
+    </Gun>
+</Guns>

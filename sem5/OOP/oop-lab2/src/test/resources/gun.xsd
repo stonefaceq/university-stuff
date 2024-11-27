@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:simpleType name="str255">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="handiness">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="One"/>
+            <xsd:enumeration value="Two"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="range">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Short"/>
+            <xsd:enumeration value="Mid"/>
+            <xsd:enumeration value="Far"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="sightingRange">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="ttc">
+        <xsd:sequence>
+            <xsd:element name="FiringRange" type="range"/>
+            <xsd:element name="SightingRange" type="sightingRange"/>
+            <xsd:element name="Magazine" type="xsd:boolean"/>
+            <xsd:element name="Sight" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Gun">
+        <xsd:sequence>
+            <xsd:element name="Model" type="str255"/>
+            <xsd:element name="Handy" type="handiness"/>
+            <xsd:element name="Origin" type="str255"/>
+            <xsd:element name="TTC" type="ttc"/>
+            <xsd:element name="Material" type="str255"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:integer"/>
+    </xsd:complexType>
+
+    <xsd:element name="Guns">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="Gun" type="Gun"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

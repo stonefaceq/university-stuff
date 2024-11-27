@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Guns xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Gun id="10">
+        <Model>ShotGun</Model>
+        <Handy>One</Handy>
+        <Origin>United States of America</Origin>
+        <TTC>
+            <FiringRange>Short</FiringRange>
+            <SightingRange>10</SightingRange>
+            <Magazine>false</Magazine>
+            <Sight>true</Sight>
+        </TTC>
+        <Material>Metal</Material>
+    </Gun>
+    <Gun id="1">
+        <Model>ShotGun</Model>
+        <Handy>One</Handy>
+        <Origin>United States of America</Origin>
+        <TTC>
+            <FiringRange>Far</FiringRange>
+            <SightingRange>1000</SightingRange>
+            <Magazine>true</Magazine>
+            <Sight>true</Sight>
+        </TTC>
+        <Material>Metal</Material>
+    </Gun>
+    <Gun id="5">
+        <Model>AssaultRifle</Model>
+        <Handy>Two</Handy>
+        <Origin>Ukraine</Origin>
+        <TTC>
+            <FiringRange>Far</FiringRange>
+            <SightingRange>2000</SightingRange>
+            <Magazine>true</Magazine>
+            <Sight>true</Sight>
+        </TTC>
+        <Material>Alluminium</Material>
+    </Gun>
+</Guns>
